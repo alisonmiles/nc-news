@@ -13,6 +13,9 @@ const Nav = () => {
       <Link className='nav-link' to='/topics'>
         Topics
       </Link>
+      <Link className='nav-link' to='/login'>
+        Log in
+      </Link>
     </nav>
   );
 };

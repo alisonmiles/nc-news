@@ -34,3 +34,35 @@
   font-size: calc(10px + 2vmin);
   color: #2f3e46;
 }
+
+.article-header {
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #2f3e46;
+}
+
+.mb-3 {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+.col-md-4 {
+  border: 1px solid #52796f;
+  margin: 2em;
+  color: #2f3e46;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.article-body {
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.article {
+  justify-content: center;
+  color: #2f3e46;
+}

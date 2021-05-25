@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { getArticles } from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const Articles = ({ articles, setArticles }) => {
   useEffect(() => {
@@ -8,25 +9,28 @@ const Articles = ({ articles, setArticles }) => {
     });
   }, []);
 
-  console.log('>>>>>', articles);
-
   return (
-    <main>
-      <h2>All Articles</h2>
-      {articles.map((article) => {
-        return <li>{article.title}</li>;
-      })}
-    </main>
+    <div>
+      <h2 className='article-header'>All Articles</h2>
+      <ul className='row mb-3'>
+        {articles.map(
+          ({ article_id, title, author, comment_count, topic, votes }) => {
+            return (
+              <li key={article_id} className='col-md-4 themed-grid-col'>
+                <Link to={`/articles/${article_id}`}>
+                  <h3>{title}</h3>
+                </Link>
+                <p>Author: {author}</p>
+                <p>Topic: {topic}</p>
+                <p>Votes: {votes}</p>
+                <p>Comments: {comment_count}</p>
+              </li>
+            );
+          }
+        )}
+      </ul>
+    </div>
   );
 };
 
 export default Articles;
-
-// 0:
-// article_id: 34
-// author: "grumpy19"
-// comment_count: "11"
-// created_at: "2020-11-22T11:13:00.000Z"
-// title: "The Notorious MSG’s Unlikely Formula For Success"
-// topic: "cooking"
-// votes: 0

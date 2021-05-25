@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import Articles from './Components/Articles';
 import Topics from './Components/Topics';
+import Article from './Components/Article';
 import { useState } from 'react';
 
 function App() {
@@ -19,16 +20,16 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-        </Switch>
-        <Switch>
           <Route exact path='/articles'>
             <Articles articles={articles} setArticles={setArticles} />
           </Route>
-        </Switch>
-        <Switch>
+          <Route exact path='/articles/:article_id'>
+            <Article articles={articles}/>
+          </Route>
           <Route exact path='/topics'>
             <Topics />
           </Route>
+          <Route exact path='/articles/'></Route>
         </Switch>
       </div>
     </Router>
