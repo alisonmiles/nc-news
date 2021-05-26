@@ -7,10 +7,9 @@ const Vote = ({ article_id, votes }) => {
   const incVotes = () => {
     setVotesChange((currVotes) => currVotes + 1);
     patchVotes(article_id, 1).catch(() => {
-    console.log('here we are') 
-    setVotesChange(0)});
+      setVotesChange(0);
+    });
   };
-  console.log(article_id, votesChange);
 
   return (
     <div>

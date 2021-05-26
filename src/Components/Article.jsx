@@ -4,7 +4,7 @@ import { getArticle, getComments } from '../utils/api';
 import PostComment from './PostComment';
 import Vote from './Vote';
 
-const Article = ({ articles }) => {
+const Article = () => {
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
@@ -13,13 +13,13 @@ const Article = ({ articles }) => {
     getArticle(article_id).then((articleFromApi) => {
       setArticle(articleFromApi);
     });
-  }, []);
+  }, [article_id]);
 
   useEffect(() => {
     getComments(article_id).then((commentsFromApi) => {
       setComments(commentsFromApi);
     });
-  }, []);
+  }, [article_id]);
 
   return (
     <main className='article'>
@@ -44,9 +44,15 @@ const Article = ({ articles }) => {
           let date = new Date(created_at).toLocaleDateString();
           return (
             <li key={comment_id} className='row mb-3'>
-              <p>Author: {author}</p>
-              <p>Date: {date}</p>
-              <p>Votes: {votes}</p>
+              <p>
+                <strong>Author: {author}</strong>
+              </p>
+              <p>
+                <strong>Date: {date}</strong>
+              </p>
+              <p>
+                <strong>Votes: {votes}</strong>
+              </p>
               <p>Comment: {body}</p>
             </li>
           );

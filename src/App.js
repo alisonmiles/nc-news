@@ -6,11 +6,8 @@ import Home from './Components/Home';
 import Articles from './Components/Articles';
 import Topics from './Components/Topics';
 import Article from './Components/Article';
-import { useState } from 'react';
 
 function App() {
-  const [articles, setArticles] = useState([]);
-
   return (
     <Router>
       <div className='App'>
@@ -21,15 +18,17 @@ function App() {
             <Home />
           </Route>
           <Route exact path='/articles'>
-            <Articles articles={articles} setArticles={setArticles} />
+            <Articles />
+          </Route>
+          <Route exact path='/articles/topic/:category'>
+            <Articles />
           </Route>
           <Route exact path='/articles/:article_id'>
-            <Article articles={articles}/>
+            <Article />
           </Route>
           <Route exact path='/topics'>
             <Topics />
           </Route>
-          <Route exact path='/articles/'></Route>
         </Switch>
       </div>
     </Router>

@@ -66,3 +66,8 @@
   justify-content: center;
   color: #2f3e46;
 }
+
+.comment-form {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
