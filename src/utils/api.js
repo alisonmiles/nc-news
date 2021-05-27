@@ -4,9 +4,11 @@ const newsApi = axios.create({
   baseURL: 'https://alison-nc-news.herokuapp.com/api',
 });
 
-export const getArticles = async (category) => {
+export const getArticles = async (category, sortBy) => {
   let path = `/articles`;
-  if (category) path += `?topic=${category}`;
+  if (category && sortBy) path += `?topic=${category}&${sortBy}`;
+  if (category && !sortBy) path += `?topic=${category}`;
+  if (sortBy && !category) path += `?${sortBy}`;
   const { data } = await newsApi.get(path);
   return data.articles;
 };

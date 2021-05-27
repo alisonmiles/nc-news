@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getArticle, getComments } from '../utils/api';
 import PostComment from './PostComment';
 import Vote from './Vote';
@@ -26,7 +26,7 @@ const Article = () => {
       <div>
         <h1>{article.title}</h1>
         <h2>Author: {article.author}</h2>
-        <h2>Topic: {article.topic}</h2>
+        <h2><Link to={`/articles/topic/${article.topic}`}>Topic: {article.topic}</Link></h2>
         <h2>
           <Vote article_id={article_id} votes={article.votes} />
         </h2>
