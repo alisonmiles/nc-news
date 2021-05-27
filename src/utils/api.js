@@ -42,3 +42,8 @@ export const postComment = async (article_id, newComment) => {
   );
   return data.comment[0];
 };
+
+export const getUsers = async () => {
+  const { data } = await newsApi.get(`/users`);
+  return data.users;
+};

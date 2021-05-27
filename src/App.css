@@ -71,3 +71,11 @@
   padding-top: 1em;
   padding-bottom: 1em;
 }
+
+.user-avatar{
+  height: auto;
+  max-width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
