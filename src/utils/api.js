@@ -40,5 +40,5 @@ export const postComment = async (article_id, newComment) => {
     `articles/${article_id}/comments`,
     newComment
   );
-  return data.comment;
+  return data.comment[0];
 };

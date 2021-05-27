@@ -5,15 +5,28 @@ import { capitaliseFirstLetter } from '../utils/utilFunctions';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState();
   const { category } = useParams();
+ 
 
   useEffect(() => {
-    getArticles(category, sortBy).then((articlesFromApi) => {
-      setArticles(articlesFromApi);
-    });
-  }, [category, sortBy]);
+    let mounted=true;
+    getArticles(category, sortBy)
+      .then((articlesFromApi) => {
+        if (mounted)
+        setArticles(articlesFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      return () => {
+        mounted = false;
+      };
+  });
 
+  if (isLoading) return <p>Loading...</p>;
   return (
     <div>
       <h2 className='article-header'>

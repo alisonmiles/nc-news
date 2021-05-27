@@ -6,7 +6,8 @@ const Vote = ({ article_id, votes }) => {
 
   const incVotes = () => {
     setVotesChange((currVotes) => currVotes + 1);
-    patchVotes(article_id, 1).catch(() => {
+    patchVotes(article_id, 1).catch((err) => {
+      console.log(err);
       setVotesChange(0);
     });
   };

@@ -1,11 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { postComment } from '../utils/api';
 import { useParams } from 'react-router-dom';
 
-const PostComment = () => {
-  const history = useHistory();
+const CommentAdder = ({ setComments }) => {
   const { article_id } = useParams();
   const [newComment, setNewComment] = useState({
     username: '',
@@ -15,8 +13,10 @@ const PostComment = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     postComment(article_id, newComment)
-      .then(() => {
-        history.push(`/articles`);
+      .then((postedComment) => {
+        setComments((currentComments) => {
+          return [postedComment, ...currentComments];
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -59,4 +59,4 @@ const PostComment = () => {
   );
 };
 
-export default PostComment;
+export default CommentAdder;

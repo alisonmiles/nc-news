@@ -1,32 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getArticle, getComments } from '../utils/api';
-import PostComment from './PostComment';
+import CommentAdder from './CommentAdder';
 import Vote from './Vote';
+import Error from './Error';
 
 const Article = () => {
   const [article, setArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setIsError] = useState(false);
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticle(article_id).then((articleFromApi) => {
-      setArticle(articleFromApi);
-    });
+    getArticle(article_id)
+      .then((articleFromApi) => {
+        setArticle(articleFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsError(true);
+        setIsLoading(true);
+      });
   }, [article_id]);
 
   useEffect(() => {
-    getComments(article_id).then((commentsFromApi) => {
-      setComments(commentsFromApi);
-    });
+    getComments(article_id)
+      .then((commentsFromApi) => {
+        setComments(commentsFromApi);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [article_id]);
 
+  if (error) return <Error />;
+  if (isLoading) return <p>Loading...</p>;
+ 
   return (
     <main className='article'>
       <div>
         <h1>{article.title}</h1>
         <h2>Author: {article.author}</h2>
-        <h2><Link to={`/articles/topic/${article.topic}`}>Topic: {article.topic}</Link></h2>
+        <h2>
+          <Link to={`/articles/topic/${article.topic}`}>
+            Topic: {article.topic}
+          </Link>
+        </h2>
         <h2>
           <Vote article_id={article_id} votes={article.votes} />
         </h2>
@@ -35,7 +56,8 @@ const Article = () => {
       </div>
       <div>
         <h4>
-          Let us know your thoughts here: <PostComment />
+          Let us know your thoughts here:{' '}
+          <CommentAdder setComments={setComments} />
         </h4>
       </div>
       <div>
