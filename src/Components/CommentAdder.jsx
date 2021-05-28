@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom';
 import { UserContext } from '../Contexts/UserContext';
 
 const CommentAdder = ({ setComments }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { article_id } = useParams();
   const [newComment, setNewComment] = useState({
-    username: '',
+    username: user.username,
     body: '',
   });
 
@@ -26,7 +26,7 @@ const CommentAdder = ({ setComments }) => {
         console.log(err);
       });
     setNewComment({
-      username: '',
+      username: user.username,
       body: '',
     });
   };
@@ -34,18 +34,7 @@ const CommentAdder = ({ setComments }) => {
   return (
     <form className='comment-form' onSubmit={handleSubmit}>
       <label htmlFor='username'>Username:</label>
-      <input
-        required
-        type='text'
-        id='username'
-        placeholder={user.username}
-        value={newComment.username}
-        onChange={(event) => {
-          setNewComment((currNewComment) => {
-            return { ...currNewComment, username: event.target.value };
-          });
-        }}
-      />
+      <input readOnly type='text' id='username' placeholder={user.username} />
       <label htmlFor='comment'>Comment:</label>
 
       <input

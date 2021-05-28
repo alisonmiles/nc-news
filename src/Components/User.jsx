@@ -15,7 +15,7 @@ const User = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [username]);
+  }, [username, setUser]);
 
   return (
     <main className='user-display'>
