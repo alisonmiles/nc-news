@@ -8,22 +8,16 @@ const Articles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState();
   const { category } = useParams();
- 
 
   useEffect(() => {
-    let mounted=true;
     getArticles(category, sortBy)
       .then((articlesFromApi) => {
-        if (mounted)
         setArticles(articlesFromApi);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
-      return () => {
-        mounted = false;
-      };
   });
 
   if (isLoading) return <p>Loading...</p>;

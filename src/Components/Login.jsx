@@ -20,6 +20,15 @@ const Login = () => {
       });
   });
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    setUser((currentUser) => {
+    console.log(currentUser);
+      //return currentUser;
+     
+    });
+  };
+
   //TODO - ADD ON CLICK TO SETUSER IN CONTEXT WHEN ONE IS CHOSEN
   //ADD FUNCTIONALITY TO MAKE THEM LOG IN BEFORE POSTING COMMENT OR ON HOME PAGE
   //ADD FUNCTIONALITY TO SHOW UP LOGGED IN USER ON NAV BAR
@@ -29,7 +38,7 @@ const Login = () => {
   return (
     <div>
       <h2>Please choose your profile to log in...</h2>
-      <Link to={`/`}>
+      <Link to={`/`} onClick={handleClick}>
         <ul className='row mb-3'>
           {users.map(({ username, avatar_url, name }) => {
             return (

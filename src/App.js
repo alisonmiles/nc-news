@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState('Please select a user');
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
