@@ -13,9 +13,10 @@ import { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState({
-    name: '',
-    username: '',
-    avatar_url: '',
+    name: 'Tom Tickle',
+    username: 'tickle122',
+    avatar_url:
+      'https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953',
   });
 
   return (
@@ -31,7 +32,7 @@ function App() {
             <Route exact path='/articles'>
               <Articles />
             </Route>
-            <Route exact path='/articles/topic/:category'>
+            <Route exact path='/topic/:category'>
               <Articles />
             </Route>
             <Route exact path='/articles/:article_id'>
@@ -43,7 +44,7 @@ function App() {
             <Route exact path='/login'>
               <Login />
             </Route>
-            <Route exact path='/login/:username'>
+            <Route exact path='/:username'>
               <User />
             </Route>
           </Switch>

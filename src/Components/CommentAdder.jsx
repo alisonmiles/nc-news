@@ -12,8 +12,6 @@ const CommentAdder = ({ setComments }) => {
     body: '',
   });
 
-  console.log(user, newComment);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     postComment(article_id, newComment)

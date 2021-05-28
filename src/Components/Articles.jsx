@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { getArticles } from '../utils/api';
 import { Link, useParams } from 'react-router-dom';
 import { capitaliseFirstLetter } from '../utils/utilFunctions';
+import Error from './Error';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState();
   const { category } = useParams();
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     getArticles(category, sortBy)
@@ -17,9 +19,12 @@ const Articles = () => {
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
+        setIsError(true);
       });
-  });
+  }, [category]);
 
+  if (isError) return <Error message={'No articles found for this topic'} />;
   if (isLoading) return <p>Loading...</p>;
   return (
     <div>
@@ -60,12 +65,12 @@ const Articles = () => {
           ({ article_id, title, author, comment_count, topic, votes }) => {
             return (
               <li key={article_id} className='col-md-4 themed-grid-col'>
-                <Link to={`/articles/${article_id}`}>
+                <Link to={`/articles/${article_id}`} className='link'>
                   <h3>{title}</h3>
                 </Link>
                 <p>Author: {author}</p>
                 <p>
-                  <Link to={`/articles/topic/${topic}`}>Topic: {topic}</Link>
+                  <Link to={`/topic/${topic}`} className='link'>Topic: {topic}</Link>
                 </p>
                 <p>Votes: {votes}</p>
                 <p>Comments: {comment_count}</p>

@@ -8,7 +8,7 @@ import Error from './Error';
 const Article = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setIsError] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
@@ -35,18 +35,15 @@ const Article = () => {
       });
   }, [article_id]);
 
-  if (error) return <Error />;
+  if (isError) return <Error message={'Unknown article id'} />;
   if (isLoading) return <p>Loading...</p>;
- 
   return (
     <main className='article'>
       <div>
         <h1>{article.title}</h1>
         <h2>Author: {article.author}</h2>
         <h2>
-          <Link to={`/articles/topic/${article.topic}`}>
-            Topic: {article.topic}
-          </Link>
+          <Link to={`/topic/${article.topic}`} className='link'>Topic: {article.topic}</Link>
         </h2>
         <h2>
           <Vote article_id={article_id} votes={article.votes} />
@@ -65,7 +62,7 @@ const Article = () => {
         {comments.map(({ author, votes, body, created_at, comment_id }) => {
           let date = new Date(created_at).toLocaleDateString();
           return (
-            <li key={comment_id} className='row mb-3'>
+            <li key={comment_id} className='comment-list'>
               <p>
                 <strong>Author: {author}</strong>
               </p>

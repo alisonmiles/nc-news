@@ -11,6 +11,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #2f3e46;
+  margin-bottom: 0em;
 }
 
 .navbar {
@@ -26,6 +27,13 @@
 .nav-link:hover {
   color: #84a98c;
 }
+
+.link {
+  color:#eb5e28;
+  cursor: grab
+}
+
+
 .home-page {
   background-color: #cad2c5;
   min-height: 100vh;
@@ -37,10 +45,33 @@
   color: #2f3e46;
 }
 
-.article-header {
+.loggedin-page{
+  background-color: #cad2c5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2f3e46;
+  font-size: 1em;
+}
+
+
+.article-header,
+.welcome-page {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #2f3e46;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.welcome-img{
+  height: auto;
+  max-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
 }
 
 .mb-3 {
@@ -49,11 +80,30 @@
   padding-left: 2em;
 }
 
-.login-page{
+.comment-list {
   list-style-type: none;
   padding-right: 2em;
   padding-left: 2em;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #2f3e46;
+  margin: 1em;
+}
+
+.login-page {
+  list-style-type: none;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+.users-list {
+  list-style-type: none;
+  padding-right: 2em;
+  padding-left: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .col-md-4 {
   border: 1px solid #52796f;
