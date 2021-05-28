@@ -15,6 +15,8 @@
 
 .navbar {
   background-color: #354f52;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .nav-link {
@@ -43,11 +45,15 @@
 
 .mb-3 {
   list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   padding-right: 2em;
   padding-left: 2em;
+}
+
+.login-page{
+  list-style-type: none;
+  padding-right: 2em;
+  padding-left: 2em;
+  display: flex;
 }
 .col-md-4 {
   border: 1px solid #52796f;
@@ -72,10 +78,26 @@
   padding-bottom: 1em;
 }
 
-.user-avatar{
+.user-avatar {
   height: auto;
   max-width: 40%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.logged-in-user {
+  font-size: 1em;
+  color: #cad2c5;
+}
+.logged-in-user-img {
+  height: auto;
+  max-width: 10%;
+}
+
+.user-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }

@@ -47,3 +47,8 @@ export const getUsers = async () => {
   const { data } = await newsApi.get(`/users`);
   return data.users;
 };
+
+export const getUser = async (username) => {
+  const {data} = await newsApi.get(`users/${username}`);
+  return data.user;
+}

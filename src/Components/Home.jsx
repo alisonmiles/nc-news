@@ -1,11 +1,14 @@
 import React from 'react';
+import Login from './Login';
 
 const Home = () => {
-    return (
-        <h2 className = 'home-page'>
-            
-        </h2>
-    );
+  return (
+    <div>
+      <div className='home-page'>
+        <Login />
+      </div>
+    </div>
+  );
 };
 
 export default Home;

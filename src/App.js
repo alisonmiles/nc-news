@@ -7,11 +7,16 @@ import Articles from './Components/Articles';
 import Topics from './Components/Topics';
 import Article from './Components/Article';
 import Login from './Components/Login';
+import User from './Components/User';
 import { UserContext } from './Contexts/UserContext';
 import { useState } from 'react';
 
 function App() {
-  const [user, setUser] = useState('Please select a user');
+  const [user, setUser] = useState({
+    name: '',
+    username: '',
+    avatar_url: '',
+  });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -37,6 +42,9 @@ function App() {
             </Route>
             <Route exact path='/login'>
               <Login />
+            </Route>
+            <Route exact path='/login/:username'>
+              <User />
             </Route>
           </Switch>
         </div>

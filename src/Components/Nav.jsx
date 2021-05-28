@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import User from './User';
 
 const Nav = () => {
   return (
@@ -16,6 +17,7 @@ const Nav = () => {
       <Link className='nav-link' to='/login'>
         Log in
       </Link>
+      <User className='nav-link' />
     </nav>
   );
 };
