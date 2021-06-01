@@ -25,7 +25,7 @@ const Login = () => {
   if (isError) return <Error message={'Unknown username'} />;
   if (isLoading) return <p>Loading...</p>;
   return (
-    <div>
+    <div className='login-page'>
       <h2 className='welcome-page'>
         Welcome! Please choose your profile to log in, read articles and
         comment...
@@ -33,21 +33,25 @@ const Login = () => {
       <ul className='users-list'>
         {users.map(({ username, avatar_url, name }) => {
           return (
-            <li key={username} className='col-md-4'>
-              <Link to={`/${username}`} className='link'>
-                <p>
-                  <strong>Username: {username}</strong>
-                </p>
-                <p>
-                  <strong>Name: {name}</strong>
-                </p>
-                <img
-                  src={avatar_url}
-                  alt='users chosen avatar'
-                  className='user-avatar'
-                ></img>
-              </Link>
-            </li>
+            <div >
+              <ul className='users-list'>
+              <li key={username} >
+                <Link to={`/${username}`} className='link'>
+                  <p>
+                    Username: {username}
+                  </p>
+                  <p>
+                    Name: {name}
+                  </p>
+                  <img
+                    src={avatar_url}
+                    alt='users chosen avatar'
+                    className='user-avatar'
+                  ></img>
+                </Link>
+              </li>
+            </ul>
+            </div>
           );
         })}
       </ul>

@@ -20,18 +20,14 @@ const User = () => {
 
   return (
     <main className='loggedin-page'>
-      <img
-        src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80'
-        className='welcome-img'
-      ></img>
       <h2 className='loggedin-page'>
         Hello {user.name}. Welcome back to Northcoders News!
         <Link to='/articles' className='link'>
-          <h3 className='loggedin-page'>
+          <h2 className='loggedin-page'>
             Why not start by clicking here to view our current articles? Please
             share your views by leaving a comment, or get in touch if you'd like
             to write for us.
-          </h3>
+          </h2>
         </Link>
       </h2>
     </main>

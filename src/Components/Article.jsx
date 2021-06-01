@@ -35,7 +35,7 @@ const Article = () => {
       });
   }, [article_id]);
 
-  if (isError) return <Error message={'Unknown article id'} />;
+  if (isError) return <Error message={"Sorry, that's not a correct article reference "} />;
   if (isLoading) return <p>Loading...</p>;
   return (
     <main className='article'>
