@@ -22,7 +22,7 @@ const Articles = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [category]);
+  }, [category, sortBy]);
 
   if (isError) return <Error message={'No articles found for this topic'} />;
   if (isLoading) return <p>Loading...</p>;
@@ -70,7 +70,9 @@ const Articles = () => {
                 </Link>
                 <p>Author: {author}</p>
                 <p>
-                  <Link to={`/topic/${topic}`} className='link'>Topic: {topic}</Link>
+                  <Link to={`/topic/${topic}`} className='link'>
+                    Topic: {topic}
+                  </Link>
                 </p>
                 <p>Votes: {votes}</p>
                 <p>Comments: {comment_count}</p>
